@@ -1,0 +1,77 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: microservice-1
+          uri: lb://microservice-1
+          predicates:
+            - Path=/api/service1/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: microservice1CircuitBreaker
+                fallbackUri: forward:/fallback/service1
+        - id: microservice-2
+          uri: lb://microservice-2
+          predicates:
+            - Path=/api/service2/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: microservice2CircuitBreaker
+                fallbackUri: forward:/fallback/service2
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+
+# Resilience4j Circuit Breaker Configuration
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+        permitted-number-of-calls-in-half-open-state: 3
+        automatic-transition-from-open-to-half-open-enabled: true
+    instances:
+      microservice1CircuitBreaker:
+        base-config: default
+      microservice2CircuitBreaker:
+        base-config: default
+
+# Zipkin Configuration
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,circuitbreakers
+
+# Logging
+logging:
+  level:
+    com.circuitbreaker: DEBUG
+    org.springframework.cloud.gateway: DEBUG
+    io.github.resilience4j: DEBUG
