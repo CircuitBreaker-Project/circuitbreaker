@@ -1,0 +1,168 @@
+services:
+
+  # ============================================================
+  # Eureka Server - Service Discovery
+  # ============================================================
+  eureka-server:
+    build:
+      context: ./eureka-server
+      dockerfile: Dockerfile
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    environment:
+      SPRING_APPLICATION_NAME: eureka-server
+      SERVER_PORT: 8761
+      EUREKA_CLIENT_REGISTER_WITH_EUREKA: "false"
+      EUREKA_CLIENT_FETCH_REGISTRY: "false"
+    networks:
+      - circuit-breaker-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+
+  # ============================================================
+  # Zipkin - Distributed Tracing
+  # ============================================================
+  zipkin:
+    image: openzipkin/zipkin:latest
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    environment:
+      STORAGE_TYPE: mem
+    networks:
+      - circuit-breaker-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9411/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+
+  # ============================================================
+  # API Gateway
+  # ============================================================
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_APPLICATION_NAME: api-gateway
+      SERVER_PORT: 8080
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka-server:8761/eureka/
+      SPRING_ZIPKIN_BASE_URL: http://zipkin:9411
+      MANAGEMENT_TRACING_SAMPLING_PROBABILITY: "1.0"
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      zipkin:
+        condition: service_healthy
+    networks:
+      - circuit-breaker-network
+    restart: unless-stopped
+
+
+  # ============================================================
+  # Microservice 1
+  # ============================================================
+  microservice-1:
+    build:
+      context: ./microservices
+      dockerfile: Dockerfile
+      args:
+        MAIN_CLASS: com.circuitbreaker.microservice.Microservice1Application
+    container_name: microservice-1
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_APPLICATION_NAME: microservice-1
+      SERVER_PORT: 8081
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka-server:8761/eureka/
+      SPRING_ZIPKIN_BASE_URL: http://zipkin:9411
+      MANAGEMENT_TRACING_SAMPLING_PROBABILITY: "1.0"
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      zipkin:
+        condition: service_healthy
+    networks:
+      - circuit-breaker-network
+    restart: unless-stopped
+
+
+  # ============================================================
+  # Microservice 2
+  # ============================================================
+  microservice-2:
+    build:
+      context: ./microservices
+      dockerfile: Dockerfile
+      args:
+        MAIN_CLASS: com.circuitbreaker.microservice.Microservice2Application
+    container_name: microservice-2
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_APPLICATION_NAME: microservice-2
+      SERVER_PORT: 8082
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka-server:8761/eureka/
+      SPRING_ZIPKIN_BASE_URL: http://zipkin:9411
+      MANAGEMENT_TRACING_SAMPLING_PROBABILITY: "1.0"
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      zipkin:
+        condition: service_healthy
+    networks:
+      - circuit-breaker-network
+    restart: unless-stopped
+
+
+  # ============================================================
+  # React Dashboard
+  # ============================================================
+  react-dashboard:
+    build:
+      context: ./react-dashboard
+      dockerfile: Dockerfile
+    container_name: react-dashboard
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_API_URL: http://api-gateway:8080
+      REACT_APP_ZIPKIN_URL: http://zipkin:9411
+    depends_on:
+      api-gateway:
+        condition: service_started
+      zipkin:
+        condition: service_started
+    networks:
+      - circuit-breaker-network
+    restart: unless-stopped
+
+
+# ==============================================================
+# Network
+# ==============================================================
+networks:
+  circuit-breaker-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+
+# ==============================================================
+# Volumes
+# ==============================================================
+volumes:
+  zipkin-data:
