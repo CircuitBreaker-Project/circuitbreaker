@@ -1,0 +1,302 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f7fb;
+  color: #172033;
+}
+
+button {
+  font-family: inherit;
+}
+
+.dashboard {
+  min-height: 100vh;
+  padding: 32px 48px;
+}
+
+/* HEADER */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.dashboard-header p {
+  margin: 8px 0 0;
+  color: #667085;
+  font-size: 15px;
+}
+
+.system-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #e4e7ec;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #16a34a;
+}
+
+/* SECTION */
+
+section {
+  margin-bottom: 28px;
+}
+
+.section-title {
+  font-size: 20px;
+  margin: 0 0 14px;
+}
+
+/* SERVICES */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.service-card {
+  background: white;
+  border: 1px solid #e4e7ec;
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+}
+
+.service-card h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.service-card p {
+  margin: 7px 0 0;
+  color: #667085;
+  font-size: 13px;
+}
+
+.service-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.service-status.up {
+  color: #15803d;
+}
+
+.service-status.down {
+  color: #dc2626;
+}
+
+/* MONITORING */
+
+.monitoring-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* CIRCUIT */
+
+.circuit-card {
+  background: white;
+  border: 1px solid #e4e7ec;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+}
+
+.circuit-card p:first-child {
+  margin: 0;
+  color: #667085;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.circuit-card h2 {
+  margin: 8px 0 20px;
+  font-size: 21px;
+}
+
+.circuit-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 14px;
+  border-radius: 8px;
+  background: #ecfdf3;
+  color: #15803d;
+}
+
+.state-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #16a34a;
+}
+
+.circuit-card > p:last-child {
+  margin-top: 20px;
+  color: #667085;
+  line-height: 1.5;
+}
+
+/* METRICS */
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.metric-card {
+  background: white;
+  border: 1px solid #e4e7ec;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+}
+
+.metric-card p {
+  margin: 0;
+  color: #667085;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.metric-card h2 {
+  margin: 10px 0 0;
+  font-size: 28px;
+}
+
+/* BUTTON */
+
+.control-section {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.latency-button {
+  border: none;
+  border-radius: 10px;
+  padding: 13px 20px;
+  background: #172033;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.latency-button:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.latency-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* CHART */
+
+.chart-section {
+  background: white;
+  border: 1px solid #e4e7ec;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+}
+
+.chart-section h2 {
+  margin-top: 0;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+  .dashboard {
+    padding: 24px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .monitoring-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    padding: 16px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* CIRCUIT BREAKER STATES */
+
+.circuit-card.closed .circuit-state {
+  background: #ecfdf3;
+  color: #15803d;
+}
+
+.circuit-card.closed .state-dot {
+  background: #16a34a;
+}
+
+.circuit-card.open .circuit-state {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.circuit-card.open .state-dot {
+  background: #dc2626;
+}
+
+.circuit-card.half-open .circuit-state {
+  background: #fffbeb;
+  color: #d97706;
+}
+
+.circuit-card.half-open .state-dot {
+  background: #f59e0b;
+}
