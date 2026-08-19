@@ -1,22 +1,29 @@
-\# Gateway Service
+# API Gateway
 
+The API Gateway is the entry point for client requests in the Circuit Breaker project.
 
+## Responsibilities
 
-This module will contain the API Gateway and resilience configuration
+- Route client requests to the appropriate microservice
+- Provide a single entry point for backend services
+- Prepare the application for resilience and circuit breaker integration
 
-for the Circuit Breaker project.
+## Gateway Configuration
 
+The Gateway runs on:
 
+- Port: 8080
 
-\## Planned Responsibilities
+## Service Routes
 
+| Service | Port | Route |
+|---|---:|---|
+| Product Service | 8081 | `/products/**` |
+| Inventory Service | 8082 | `/inventory/**` |
+| Recommendation Service | 8083 | `/recommendations/**` |
 
+## Request Flow
 
-\- API Gateway routing
+Client → API Gateway → Microservice
 
-\- Service discovery integration
-
-\- Circuit Breaker configuration
-
-\- Resilience handling
-
+The Gateway forwards requests to the corresponding backend service based on the request path.
