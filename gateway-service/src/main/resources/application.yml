@@ -10,16 +10,23 @@ spring:
       routes:
 
         - id: product-service
-          uri: http://localhost:8081
+          uri: lb://product-service
           predicates:
             - Path=/products/**
 
         - id: inventory-service
-          uri: http://localhost:8082
+          uri: lb://inventory-service
           predicates:
             - Path=/inventory/**
 
         - id: recommendation-service
-          uri: http://localhost:8083
+          uri: lb://recommendation-service
           predicates:
             - Path=/recommendations/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
