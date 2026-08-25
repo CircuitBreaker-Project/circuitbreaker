@@ -7,26 +7,141 @@ spring:
 
   cloud:
     gateway:
-      routes:
+      server:
+        webflux:
+          routes:
 
-        - id: product-service
-          uri: lb://product-service
-          predicates:
-            - Path=/products/**
+            # ==================================================
+            # PRODUCT SERVICE
+            # ==================================================
 
-        - id: inventory-service
-          uri: lb://inventory-service
-          predicates:
-            - Path=/inventory/**
+            - id: product-service
+              uri: lb://product-service
+              predicates:
+                - Path=/products/**
 
-        - id: recommendation-service
-          uri: lb://recommendation-service
-          predicates:
-            - Path=/recommendations/**
+            # ==================================================
+            # INVENTORY SERVICE
+            # ==================================================
+
+            - id: inventory-service
+              uri: lb://inventory-service
+              predicates:
+                - Path=/inventory/**
+
+            # ==================================================
+            # RECOMMENDATION SERVICE
+            # ==================================================
+            # Circuit Breaker is intentionally configured here
+            # because Recommendation Service is the Week 2
+            # resilience / chaos-testing target.
+            # ==================================================
+
+            - id: recommendation-service
+              uri: lb://recommendation-service
+              predicates:
+                - Path=/recommendations/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    name: recommendationServiceCircuitBreaker
+                    fallbackUri: forward:/fallback/recommendation
+                    statusCodes:
+                      - 500
+                      - 502
+                      - 503
+                      - 504
+
+          # ==================================================
+          # DEFAULT FILTERS
+          # ==================================================
+
+          default-filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+
+    # ========================================================
+    # LOAD BALANCER
+    # ========================================================
+
+    loadbalancer:
+      ribbon:
+        enabled: false
+
+
+# ============================================================
+# EUREKA SERVICE DISCOVERY
+# ============================================================
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
     register-with-eureka: true
     fetch-registry: true
+
+  instance:
+    prefer-ip-address: true
+
+
+# ============================================================
+# RESILIENCE4J CIRCUIT BREAKER
+# ============================================================
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      recommendationServiceCircuitBreaker:
+
+        registerHealthIndicator: true
+
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+
+        waitDurationInOpenState: 10s
+
+        permittedNumberOfCallsInHalfOpenState: 3
+
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+
+  timelimiter:
+    instances:
+      recommendationServiceCircuitBreaker:
+        timeoutDuration: 3s
+
+
+# ============================================================
+# ACTUATOR
+# ============================================================
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - metrics
+          - prometheus
+
+  endpoint:
+    health:
+      show-details: always
+
+  health:
+    circuitbreakers:
+      enabled: true
+
+
+# ============================================================
+# LOGGING
+# ============================================================
+
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO
+    org.springframework.cloud.netflix.eureka: INFO
+    io.github.resilience4j: INFO
