@@ -42,6 +42,15 @@ spring:
               predicates:
                 - Path=/recommendations/**
               filters:
+                - name: InMemoryRateLimit
+                  args:
+                    capacity: 10
+                    refillPerSecond: 5
+
+                - name: Bulkhead
+                  args:
+                    name: recommendationBulkhead
+
                 - name: CircuitBreaker
                   args:
                     name: recommendationServiceCircuitBreaker
@@ -50,9 +59,7 @@ spring:
                       - 500
                       - 502
                       - 503
-                      - 504
-
-          # ==================================================
+                      - 504      # ==================================================
           # DEFAULT FILTERS
           # ==================================================
 
@@ -106,6 +113,11 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 3
 
         automaticTransitionFromOpenToHalfOpenEnabled: true
+  bulkhead:
+    instances:
+      recommendationBulkhead:
+        maxConcurrentCalls: 5
+        maxWaitDuration: 0ms
 
   timelimiter:
     instances:
