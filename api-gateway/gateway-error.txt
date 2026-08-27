@@ -1,0 +1,547 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.circuitbreaker:api-gateway >-------------------
+[INFO] Building api-gateway 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.3:run (default-cli) > test-compile @ api-gateway >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ api-gateway ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ api-gateway ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ api-gateway ---
+[INFO] skip non existing resourceDirectory C:\Users\varsh\circuit-breaker-project\api-gateway\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ api-gateway ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot:3.5.3:run (default-cli) < test-compile @ api-gateway <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.3:run (default-cli) @ api-gateway ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.3)
+
+2026-08-26T11:08:46.293+05:30  INFO 16248 --- [api-gateway] [           main] c.c.gateway.ApiGatewayApplication        : Starting ApiGatewayApplication using Java 17.0.20.1 with PID 16248 (C:\Users\varsh\circuit-breaker-project\api-gateway\target\classes started by varsh in C:\Users\varsh\circuit-breaker-project\api-gateway)
+2026-08-26T11:08:46.297+05:30 DEBUG 16248 --- [api-gateway] [           main] c.c.gateway.ApiGatewayApplication        : Running with Spring Boot v3.5.3, Spring v6.2.8
+2026-08-26T11:08:46.299+05:30  INFO 16248 --- [api-gateway] [           main] c.c.gateway.ApiGatewayApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-08-26T11:08:47.965+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.AspectJOnClasspathCondition    : Aspects are not activated because AspectJ is not on the classpath.
+2026-08-26T11:08:47.965+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.AspectJOnClasspathCondition    : Aspects are not activated because AspectJ is not on the classpath.
+2026-08-26T11:08:47.967+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.RxJava2OnClasspathCondition    : RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-08-26T11:08:47.990+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.AspectJOnClasspathCondition    : Aspects are not activated because AspectJ is not on the classpath.
+2026-08-26T11:08:47.990+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.RxJava2OnClasspathCondition    : RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-08-26T11:08:47.990+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.AspectJOnClasspathCondition    : Aspects are not activated because AspectJ is not on the classpath.
+2026-08-26T11:08:48.018+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.AspectJOnClasspathCondition    : Aspects are not activated because AspectJ is not on the classpath.
+2026-08-26T11:08:48.019+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.RxJava2OnClasspathCondition    : RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-08-26T11:08:48.019+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.AspectJOnClasspathCondition    : Aspects are not activated because AspectJ is not on the classpath.
+2026-08-26T11:08:48.044+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.AspectJOnClasspathCondition    : Aspects are not activated because AspectJ is not on the classpath.
+2026-08-26T11:08:48.045+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.RxJava2OnClasspathCondition    : RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-08-26T11:08:48.045+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.AspectJOnClasspathCondition    : Aspects are not activated because AspectJ is not on the classpath.
+2026-08-26T11:08:48.060+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.AspectJOnClasspathCondition    : Aspects are not activated because AspectJ is not on the classpath.
+2026-08-26T11:08:48.061+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.RxJava2OnClasspathCondition    : RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-08-26T11:08:48.061+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.AspectJOnClasspathCondition    : Aspects are not activated because AspectJ is not on the classpath.
+2026-08-26T11:08:48.080+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.AspectJOnClasspathCondition    : Aspects are not activated because AspectJ is not on the classpath.
+2026-08-26T11:08:48.082+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.RxJava2OnClasspathCondition    : RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-08-26T11:08:48.082+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.AspectJOnClasspathCondition    : Aspects are not activated because AspectJ is not on the classpath.
+2026-08-26T11:08:48.102+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.AspectJOnClasspathCondition    : Aspects are not activated because AspectJ is not on the classpath.
+2026-08-26T11:08:48.103+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.RxJava2OnClasspathCondition    : RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-08-26T11:08:48.103+05:30 DEBUG 16248 --- [api-gateway] [           main] i.g.r.s.u.AspectJOnClasspathCondition    : Aspects are not activated because AspectJ is not on the classpath.
+2026-08-26T11:08:48.757+05:30  INFO 16248 --- [api-gateway] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=570b8eb7-b472-3d37-87b0-329d4fbf9167
+2026-08-26T11:08:49.530+05:30  WARN 16248 --- [api-gateway] [           main] GatewayClassPathWarningAutoConfiguration : 
+
+**********************************************************
+
+The artifact spring-cloud-gateway-server is deprecated. It will be removed in the next major release. Please add spring-cloud-gateway-server-webflux dependency.
+
+**********************************************************
+
+
+2026-08-26T11:08:50.877+05:30  INFO 16248 --- [api-gateway] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-08-26T11:08:52.218+05:30  INFO 16248 --- [api-gateway] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-08-26T11:08:52.503+05:30 DEBUG 16248 --- [api-gateway] [           main] o.s.c.gateway.config.GatewayProperties   : Routes supplied from Gateway Properties: [RouteDefinition{id='microservice-1', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/api/service1/**}}], filters=[FilterDefinition{name='CircuitBreaker', args={name=microservice1CircuitBreaker, fallbackuri=forward:/fallback/service1}}], uri=lb://microservice-1, order=0, metadata={}, enabled=true}, RouteDefinition{id='microservice-2', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/api/service2/**}}], filters=[FilterDefinition{name='CircuitBreaker', args={name=microservice2CircuitBreaker, fallbackuri=forward:/fallback/service2}}], uri=lb://microservice-2, order=0, metadata={}, enabled=true}]
+2026-08-26T11:08:52.769+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2026-08-26T11:08:52.769+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2026-08-26T11:08:52.769+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2026-08-26T11:08:52.769+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2026-08-26T11:08:52.770+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2026-08-26T11:08:52.770+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2026-08-26T11:08:52.770+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2026-08-26T11:08:52.770+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2026-08-26T11:08:52.770+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2026-08-26T11:08:52.770+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2026-08-26T11:08:52.770+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2026-08-26T11:08:52.770+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-08-26T11:08:52.770+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2026-08-26T11:08:52.771+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-08-26T11:08:54.369+05:30  INFO 16248 --- [api-gateway] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-08-26T11:08:54.595+05:30  INFO 16248 --- [api-gateway] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoints beneath base path '/actuator'
+2026-08-26T11:08:54.985+05:30  INFO 16248 --- [api-gateway] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2026-08-26T11:08:55.012+05:30  WARN 16248 --- [api-gateway] [           main] s.w.s.StarterDeprecatedAutoConfiguration : 
+
+**********************************************************
+
+spring-cloud-starter-gateway is deprecated. It will be removed in the next major release. Please use spring-cloud-starter-gateway-server-webflux instead.
+
+**********************************************************
+
+
+2026-08-26T11:08:55.024+05:30  WARN 16248 --- [api-gateway] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-08-26T11:08:55.114+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2026-08-26T11:08:55.153+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2026-08-26T11:08:55.162+05:30  INFO 16248 --- [api-gateway] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2026-08-26T11:08:55.177+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2026-08-26T11:08:55.177+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2026-08-26T11:08:55.177+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2026-08-26T11:08:55.177+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2026-08-26T11:08:55.177+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2026-08-26T11:08:55.177+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2026-08-26T11:08:55.177+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2026-08-26T11:08:55.820+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2026-08-26T11:08:55.824+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2026-08-26T11:08:55.826+05:30  INFO 16248 --- [api-gateway] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2026-08-26T11:08:55.829+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1787722735828 with initial instances count: 1
+2026-08-26T11:08:55.834+05:30  INFO 16248 --- [api-gateway] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application API-GATEWAY with eureka with status UP
+2026-08-26T11:08:55.835+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1787722735834, current=UP, previous=STARTING]
+2026-08-26T11:08:55.837+05:30  INFO 16248 --- [api-gateway] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_API-GATEWAY/localhost:api-gateway:8080: registering service...
+2026-08-26T11:08:55.900+05:30  INFO 16248 --- [api-gateway] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_API-GATEWAY/localhost:api-gateway:8080 - registration status: 204
+2026-08-26T11:08:55.927+05:30 DEBUG 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition ReactiveCompositeDiscoveryClient_PRODUCT-SERVICE applying {pattern=/product-service/**} to Path
+2026-08-26T11:08:55.951+05:30 DEBUG 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition ReactiveCompositeDiscoveryClient_PRODUCT-SERVICE applying filter {regexp=/product-service/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2026-08-26T11:08:55.965+05:30 DEBUG 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition matched: ReactiveCompositeDiscoveryClient_PRODUCT-SERVICE
+2026-08-26T11:08:55.967+05:30 DEBUG 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition microservice-1 applying {_genkey_0=/api/service1/**} to Path
+2026-08-26T11:08:55.974+05:30 ERROR 16248 --- [api-gateway] [           main] o.s.c.gateway.route.CachingRouteLocator  : Refresh routes error !!!
+
+java.lang.IllegalArgumentException: Unable to find GatewayFilterFactory with name CircuitBreaker
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.loadGatewayFilters(RouteDefinitionRouteLocator.java:145) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.getFilters(RouteDefinitionRouteLocator.java:191) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:132) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:492) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:424) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:439) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerNext(FluxMergeSequential.java:304) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onNext(FluxMergeSequential.java:578) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.tryOnNext(FluxFilterFuseable.java:148) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscriptionConditional.slowPath(FluxIterable.java:664) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscriptionConditional.request(FluxIterable.java:623) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.request(FluxFilterFuseable.java:191) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:571) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.onSubscribe(FluxFilterFuseable.java:87) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:179) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8891) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8891) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4576) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribeWith(Mono.java:4641) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4542) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4478) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4450) ~[reactor-core-3.7.7.jar:3.7.7]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:98) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:42) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:454) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:387) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:75) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:58) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:454) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:387) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.start(EurekaAutoServiceRegistration.java:91) ~[spring-cloud-netflix-eureka-client-4.3.0.jar:4.3.0]
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:405) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:394) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:586) ~[spring-context-6.2.8.jar:6.2.8]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:364) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:310) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:1006) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:630) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.3.jar:3.5.3]
+	at com.circuitbreaker.gateway.ApiGatewayApplication.main(ApiGatewayApplication.java:11) ~[classes/:na]
+
+2026-08-26T11:08:55.984+05:30 DEBUG 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition ReactiveCompositeDiscoveryClient_PRODUCT-SERVICE applying {pattern=/product-service/**} to Path
+2026-08-26T11:08:55.985+05:30 DEBUG 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition ReactiveCompositeDiscoveryClient_PRODUCT-SERVICE applying filter {regexp=/product-service/?(?<remaining>.*), replacement=/${remaining}} to RewritePath
+2026-08-26T11:08:55.986+05:30 DEBUG 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition matched: ReactiveCompositeDiscoveryClient_PRODUCT-SERVICE
+2026-08-26T11:08:55.987+05:30 DEBUG 16248 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition microservice-1 applying {_genkey_0=/api/service1/**} to Path
+2026-08-26T11:08:55.989+05:30 ERROR 16248 --- [api-gateway] [           main] reactor.core.publisher.Operators         : Operator called default onErrorDropped
+
+reactor.core.Exceptions$ErrorCallbackNotImplemented: java.lang.IllegalArgumentException: Unable to find GatewayFilterFactory with name CircuitBreaker
+Caused by: java.lang.IllegalArgumentException: Unable to find GatewayFilterFactory with name CircuitBreaker
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.loadGatewayFilters(RouteDefinitionRouteLocator.java:145) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.getFilters(RouteDefinitionRouteLocator.java:191) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:132) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:492) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:424) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:439) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerNext(FluxMergeSequential.java:304) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onNext(FluxMergeSequential.java:578) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.tryOnNext(FluxFilterFuseable.java:148) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscriptionConditional.slowPath(FluxIterable.java:664) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscriptionConditional.request(FluxIterable.java:623) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.request(FluxFilterFuseable.java:191) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:571) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.onSubscribe(FluxFilterFuseable.java:87) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:179) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8891) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8891) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.InternalFluxOperator.subscribe(InternalFluxOperator.java:68) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxDefer.subscribe(FluxDefer.java:54) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4576) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribeWith(Mono.java:4641) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4542) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4478) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4425) ~[reactor-core-3.7.7.jar:3.7.7]
+	at org.springframework.cloud.gateway.filter.cors.CorsGatewayFilterApplicationListener.onApplicationEvent(CorsGatewayFilterApplicationListener.java:65) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.cloud.gateway.filter.cors.CorsGatewayFilterApplicationListener.onApplicationEvent(CorsGatewayFilterApplicationListener.java:44) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:454) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:387) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.handleRefreshError(CachingRouteLocator.java:126) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at reactor.core.publisher.LambdaMonoSubscriber.doError(LambdaMonoSubscriber.java:155) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.LambdaMonoSubscriber.onError(LambdaMonoSubscriber.java:150) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.MonoStreamCollector$StreamCollectorSubscriber.onError(MonoStreamCollector.java:149) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlattenIterable$FlattenIterableSubscriber.drainAsync(FluxFlattenIterable.java:351) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlattenIterable$FlattenIterableSubscriber.drain(FluxFlattenIterable.java:724) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlattenIterable$FlattenIterableSubscriber.onError(FluxFlattenIterable.java:263) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxPeekFuseable$PeekFuseableSubscriber.onError(FluxPeekFuseable.java:234) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.MonoCollectList$MonoCollectListSubscriber.onError(MonoCollectList.java:108) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:403) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerError(FluxMergeSequential.java:321) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onError(FluxMergeSequential.java:586) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onError(FluxMap.java:134) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onError(FluxMap.java:134) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:114) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:492) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:424) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:439) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerNext(FluxMergeSequential.java:304) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onNext(FluxMergeSequential.java:578) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.tryOnNext(FluxFilterFuseable.java:148) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscriptionConditional.slowPath(FluxIterable.java:664) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscriptionConditional.request(FluxIterable.java:623) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.request(FluxFilterFuseable.java:191) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:571) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.onSubscribe(FluxFilterFuseable.java:87) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:179) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8891) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8891) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4576) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribeWith(Mono.java:4641) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4542) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4478) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4450) ~[reactor-core-3.7.7.jar:3.7.7]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:98) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:42) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:454) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:387) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:75) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:58) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:454) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:387) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.start(EurekaAutoServiceRegistration.java:91) ~[spring-cloud-netflix-eureka-client-4.3.0.jar:4.3.0]
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:405) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:394) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:586) ~[spring-context-6.2.8.jar:6.2.8]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:364) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:310) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:1006) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:630) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.3.jar:3.5.3]
+	at com.circuitbreaker.gateway.ApiGatewayApplication.main(ApiGatewayApplication.java:11) ~[classes/:na]
+
+2026-08-26T11:08:56.009+05:30  WARN 16248 --- [api-gateway] [           main] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'eurekaAutoServiceRegistration'
+2026-08-26T11:08:56.018+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2026-08-26T11:08:59.032+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2026-08-26T11:08:59.052+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_API-GATEWAY/localhost:api-gateway:8080 - deregister  status: 200
+2026-08-26T11:08:59.054+05:30  INFO 16248 --- [api-gateway] [           main] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2026-08-26T11:08:59.058+05:30  WARN 16248 --- [api-gateway] [           main] ServerWebfluxPropertiesMigrationListener : 
+The use of configuration keys that have been renamed was found in the environment:
+
+Property source 'Config resource 'class path resource [application.yml]' via location 'optional:classpath:/'':
+	Key: spring.cloud.gateway.routes[0].id
+		Line: 11
+		Replacement: spring.cloud.gateway.server.webflux.routes[0].id
+	Key: spring.cloud.gateway.routes[0].uri
+		Line: 12
+		Replacement: spring.cloud.gateway.server.webflux.routes[0].uri
+	Key: spring.cloud.gateway.routes[0].predicates[0]
+		Line: 14
+		Replacement: spring.cloud.gateway.server.webflux.routes[0].predicates[0]
+	Key: spring.cloud.gateway.routes[0].filters[0].name
+		Line: 16
+		Replacement: spring.cloud.gateway.server.webflux.routes[0].filters[0].name
+	Key: spring.cloud.gateway.routes[0].filters[0].args.name
+		Line: 18
+		Replacement: spring.cloud.gateway.server.webflux.routes[0].filters[0].args.name
+	Key: spring.cloud.gateway.routes[0].filters[0].args.fallbackuri
+		Line: 19
+		Replacement: spring.cloud.gateway.server.webflux.routes[0].filters[0].args.fallbackuri
+	Key: spring.cloud.gateway.routes[1].id
+		Line: 20
+		Replacement: spring.cloud.gateway.server.webflux.routes[1].id
+	Key: spring.cloud.gateway.routes[1].uri
+		Line: 21
+		Replacement: spring.cloud.gateway.server.webflux.routes[1].uri
+	Key: spring.cloud.gateway.routes[1].predicates[0]
+		Line: 23
+		Replacement: spring.cloud.gateway.server.webflux.routes[1].predicates[0]
+	Key: spring.cloud.gateway.routes[1].filters[0].name
+		Line: 25
+		Replacement: spring.cloud.gateway.server.webflux.routes[1].filters[0].name
+	Key: spring.cloud.gateway.routes[1].filters[0].args.name
+		Line: 27
+		Replacement: spring.cloud.gateway.server.webflux.routes[1].filters[0].args.name
+	Key: spring.cloud.gateway.routes[1].filters[0].args.fallbackuri
+		Line: 28
+		Replacement: spring.cloud.gateway.server.webflux.routes[1].filters[0].args.fallbackuri
+
+
+Each configuration key has been temporarily mapped to its replacement for your convenience. To silence this warning, please update your configuration to use the new keys.
+
+2026-08-26T11:08:59.061+05:30  WARN 16248 --- [api-gateway] [           main] o.s.b.c.p.m.PropertiesMigrationListener  : 
+The use of configuration keys that have been renamed was found in the environment:
+
+Property source 'Config resource 'class path resource [application.yml]' via location 'optional:classpath:/'':
+	Key: spring.cloud.gateway.discovery.locator.enabled
+		Line: 8
+		Replacement: spring.cloud.gateway.server.webflux.discovery.locator.enabled
+	Key: spring.cloud.gateway.discovery.locator.lower-case-service-id
+		Line: 9
+		Replacement: spring.cloud.gateway.server.webflux.discovery.locator.lower-case-service-id
+
+Property source 'Config resource 'class path resource [application.properties]' via location 'optional:classpath:/'':
+	Key: spring.cloud.gateway.discovery.locator.enabled
+		Line: 9
+		Replacement: spring.cloud.gateway.server.webflux.discovery.locator.enabled
+	Key: spring.cloud.gateway.discovery.locator.lower-case-service-id
+		Line: 10
+		Replacement: spring.cloud.gateway.server.webflux.discovery.locator.lower-case-service-id
+
+
+Each configuration key has been temporarily mapped to its replacement for your convenience. To silence this warning, please update your configuration to use the new keys.
+
+2026-08-26T11:08:59.087+05:30  INFO 16248 --- [api-gateway] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-08-26T11:08:59.118+05:30 ERROR 16248 --- [api-gateway] [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.context.ApplicationContextException: Failed to start bean 'eurekaAutoServiceRegistration'
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:408) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:394) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:586) ~[spring-context-6.2.8.jar:6.2.8]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:364) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:310) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:1006) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:630) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.3.jar:3.5.3]
+	at com.circuitbreaker.gateway.ApiGatewayApplication.main(ApiGatewayApplication.java:11) ~[classes/:na]
+Caused by: java.lang.IllegalArgumentException: Unable to find GatewayFilterFactory with name CircuitBreaker
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.loadGatewayFilters(RouteDefinitionRouteLocator.java:145) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.getFilters(RouteDefinitionRouteLocator.java:191) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:132) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:492) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:424) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:439) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerNext(FluxMergeSequential.java:304) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onNext(FluxMergeSequential.java:578) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.tryOnNext(FluxFilterFuseable.java:148) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscriptionConditional.slowPath(FluxIterable.java:664) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscriptionConditional.request(FluxIterable.java:623) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.request(FluxFilterFuseable.java:191) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:571) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.onSubscribe(FluxFilterFuseable.java:87) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:179) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8891) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8891) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.InternalFluxOperator.subscribe(InternalFluxOperator.java:68) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxDefer.subscribe(FluxDefer.java:54) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4576) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribeWith(Mono.java:4641) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4542) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4478) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4425) ~[reactor-core-3.7.7.jar:3.7.7]
+	at org.springframework.cloud.gateway.filter.cors.CorsGatewayFilterApplicationListener.onApplicationEvent(CorsGatewayFilterApplicationListener.java:65) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.cloud.gateway.filter.cors.CorsGatewayFilterApplicationListener.onApplicationEvent(CorsGatewayFilterApplicationListener.java:44) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:454) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:387) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.handleRefreshError(CachingRouteLocator.java:126) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at reactor.core.publisher.LambdaMonoSubscriber.doError(LambdaMonoSubscriber.java:155) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.LambdaMonoSubscriber.onError(LambdaMonoSubscriber.java:150) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.MonoStreamCollector$StreamCollectorSubscriber.onError(MonoStreamCollector.java:149) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlattenIterable$FlattenIterableSubscriber.drainAsync(FluxFlattenIterable.java:351) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlattenIterable$FlattenIterableSubscriber.drain(FluxFlattenIterable.java:724) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlattenIterable$FlattenIterableSubscriber.onError(FluxFlattenIterable.java:263) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxPeekFuseable$PeekFuseableSubscriber.onError(FluxPeekFuseable.java:234) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.MonoCollectList$MonoCollectListSubscriber.onError(MonoCollectList.java:108) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:403) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerError(FluxMergeSequential.java:321) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onError(FluxMergeSequential.java:586) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onError(FluxMap.java:134) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onError(FluxMap.java:134) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:114) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:492) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:424) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:439) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerNext(FluxMergeSequential.java:304) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onNext(FluxMergeSequential.java:578) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.tryOnNext(FluxFilterFuseable.java:148) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscriptionConditional.slowPath(FluxIterable.java:664) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscriptionConditional.request(FluxIterable.java:623) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.request(FluxFilterFuseable.java:191) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:571) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableSubscriber.onSubscribe(FluxFilterFuseable.java:87) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:179) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8891) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8891) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4576) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribeWith(Mono.java:4641) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4542) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4478) ~[reactor-core-3.7.7.jar:3.7.7]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4450) ~[reactor-core-3.7.7.jar:3.7.7]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:98) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:42) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:454) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:387) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:75) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:58) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:454) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:387) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.start(EurekaAutoServiceRegistration.java:91) ~[spring-cloud-netflix-eureka-client-4.3.0.jar:4.3.0]
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:405) ~[spring-context-6.2.8.jar:6.2.8]
+	... 14 common frames omitted
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:104) ~[reactor-core-3.7.7.jar:3.7.7]
+		at reactor.core.publisher.Flux.blockLast(Flux.java:2817) ~[reactor-core-3.7.7.jar:3.7.7]
+		at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.lambda$onApplicationEvent$3(WeightCalculatorWebFilter.java:156) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+		at org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider.ifAvailable(DefaultListableBeanFactory.java:2543) ~[spring-beans-6.2.8.jar:6.2.8]
+		at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.onApplicationEvent(WeightCalculatorWebFilter.java:156) ~[spring-cloud-gateway-server-4.3.0.jar:4.3.0]
+		... 28 common frames omitted
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  21.825 s
+[INFO] Finished at: 2026-08-26T11:08:59+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.3:run (default-cli) on project api-gateway: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
