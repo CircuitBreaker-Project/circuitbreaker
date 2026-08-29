@@ -1,140 +1,283 @@
-version: '3.8'
-
 services:
-  # Eureka Server - Service Discovery
+
+  # ============================================================
+  # EUREKA SERVER
+  # ============================================================
   eureka-server:
     build:
       context: ./eureka-server
       dockerfile: Dockerfile
+
     container_name: eureka-server
+
     ports:
       - "8761:8761"
+
     environment:
-      - SPRING_APPLICATION_NAME=eureka-server
-      - SERVER_PORT=8761
-      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=false
-      - EUREKA_CLIENT_FETCH_REGISTRY=false
+      SPRING_APPLICATION_NAME: eureka-server
+      SERVER_PORT: 8761
+      EUREKA_CLIENT_REGISTER_WITH_EUREKA: "false"
+      EUREKA_CLIENT_FETCH_REGISTRY: "false"
+
     networks:
       - circuit-breaker-network
+
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
+      test:
+        [
+          "CMD-SHELL",
+          "curl -f http://localhost:8761/actuator/health || exit 1"
+        ]
       interval: 30s
       timeout: 10s
-      retries: 3
+      retries: 5
+      start_period: 60s
 
-  # Zipkin - Distributed Tracing
+    restart: unless-stopped
+
+
+  # ============================================================
+  # ZIPKIN
+  # ============================================================
   zipkin:
     image: openzipkin/zipkin:latest
+
     container_name: zipkin
+
     ports:
       - "9411:9411"
+
     environment:
-      - STORAGE_TYPE=mem
+      STORAGE_TYPE: mem
+
     networks:
       - circuit-breaker-network
+
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9411/health"]
+      test:
+        [
+          "CMD-SHELL",
+          "wget -q --spider http://localhost:9411/health || exit 1"
+        ]
       interval: 30s
       timeout: 10s
-      retries: 3
+      retries: 5
+      start_period: 30s
 
-  # API Gateway
+    restart: unless-stopped
+
+
+  # ============================================================
+  # PRODUCT SERVICE
+  # ============================================================
+  product-service:
+    build:
+      context: ./product-service
+      dockerfile: Dockerfile
+
+    container_name: product-service
+
+    ports:
+      - "8081:8081"
+
+    environment:
+      SPRING_APPLICATION_NAME: product-service
+      SERVER_PORT: 8081
+
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka-server:8761/eureka/
+
+      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: health,info,prometheus
+      MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS: always
+
+      MANAGEMENT_TRACING_SAMPLING_PROBABILITY: "1.0"
+
+      SPRING_ZIPKIN_BASE_URL: http://zipkin:9411
+
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+
+      zipkin:
+        condition: service_healthy
+
+    networks:
+      - circuit-breaker-network
+
+    restart: unless-stopped
+
+
+  # ============================================================
+  # INVENTORY SERVICE
+  # ============================================================
+  inventory-service:
+    build:
+      context: ./inventory-service
+      dockerfile: Dockerfile
+
+    container_name: inventory-service
+
+    ports:
+      - "8082:8082"
+
+    environment:
+      SPRING_APPLICATION_NAME: inventory-service
+      SERVER_PORT: 8082
+
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka-server:8761/eureka/
+
+      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: health,info,prometheus
+      MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS: always
+
+      MANAGEMENT_TRACING_SAMPLING_PROBABILITY: "1.0"
+
+      SPRING_ZIPKIN_BASE_URL: http://zipkin:9411
+
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+
+      zipkin:
+        condition: service_healthy
+
+    networks:
+      - circuit-breaker-network
+
+    restart: unless-stopped
+
+
+  # ============================================================
+  # RECOMMENDATION SERVICE
+  # ============================================================
+  recommendation-service:
+    build:
+      context: ./recommendation-service
+      dockerfile: Dockerfile
+
+    container_name: recommendation-service
+
+    ports:
+      - "8083:8083"
+
+    environment:
+      SPRING_APPLICATION_NAME: recommendation-service
+      SERVER_PORT: 8083
+
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka-server:8761/eureka/
+
+      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: health,info,prometheus
+      MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS: always
+
+      MANAGEMENT_TRACING_SAMPLING_PROBABILITY: "1.0"
+
+      SPRING_ZIPKIN_BASE_URL: http://zipkin:9411
+
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+
+      zipkin:
+        condition: service_healthy
+
+    networks:
+      - circuit-breaker-network
+
+    restart: unless-stopped
+
+
+  # ============================================================
+  # API GATEWAY
+  # ============================================================
   api-gateway:
     build:
       context: ./api-gateway
       dockerfile: Dockerfile
+
     container_name: api-gateway
+
     ports:
-      - "8080:8080"
+      - "8090:8080"
+
     environment:
-      - SPRING_APPLICATION_NAME=api-gateway
-      - SERVER_PORT=8080
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eureka-server:8761/eureka/
-      - SPRING_ZIPKIN_BASE_URL=http://zipkin:9411
-      - MANAGEMENT_TRACING_SAMPLING_PROBABILITY=1.0
+      SPRING_APPLICATION_NAME: api-gateway
+      SERVER_PORT: 8080
+
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka-server:8761/eureka/
+
+      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: health,info,prometheus
+      MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS: always
+
+      MANAGEMENT_TRACING_SAMPLING_PROBABILITY: "1.0"
+
+      SPRING_ZIPKIN_BASE_URL: http://zipkin:9411
+
     depends_on:
       eureka-server:
         condition: service_healthy
+
       zipkin:
         condition: service_healthy
+
     networks:
       - circuit-breaker-network
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -f http://localhost:8080/actuator/health || exit 1"
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
     restart: unless-stopped
 
-  # Microservice 1
-  microservice-1:
-    build:
-      context: ./microservices
-      dockerfile: Dockerfile
-      args:
-        SERVICE_NAME: microservice-1
-    container_name: microservice-1
-    ports:
-      - "8081:8081"
-    environment:
-      - SPRING_APPLICATION_NAME=microservice-1
-      - SERVER_PORT=8081
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eureka-server:8761/eureka/
-      - SPRING_ZIPKIN_BASE_URL=http://zipkin:9411
-      - MANAGEMENT_TRACING_SAMPLING_PROBABILITY=1.0
-    depends_on:
-      eureka-server:
-        condition: service_healthy
-      zipkin:
-        condition: service_healthy
-    networks:
-      - circuit-breaker-network
-    restart: unless-stopped
 
-  # Microservice 2
-  microservice-2:
-    build:
-      context: ./microservices
-      dockerfile: Dockerfile
-      args:
-        SERVICE_NAME: microservice-2
-    container_name: microservice-2
-    ports:
-      - "8082:8082"
-    environment:
-      - SPRING_APPLICATION_NAME=microservice-2
-      - SERVER_PORT=8082
-      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eureka-server:8761/eureka/
-      - SPRING_ZIPKIN_BASE_URL=http://zipkin:9411
-      - MANAGEMENT_TRACING_SAMPLING_PROBABILITY=1.0
-    depends_on:
-      eureka-server:
-        condition: service_healthy
-      zipkin:
-        condition: service_healthy
-    networks:
-      - circuit-breaker-network
-    restart: unless-stopped
-
-  # React Dashboard
+  # ============================================================
+  # REACT DASHBOARD
+  # ============================================================
   react-dashboard:
     build:
       context: ./react-dashboard
       dockerfile: Dockerfile
+
     container_name: react-dashboard
+
     ports:
       - "3000:3000"
+
     environment:
-      - REACT_APP_API_URL=http://api-gateway:8080
-      - REACT_APP_ZIPKIN_URL=http://zipkin:9411
+      REACT_APP_API_URL: http://localhost:8090
+      REACT_APP_ZIPKIN_URL: http://localhost:9411
+
     depends_on:
-      - api-gateway
-      - zipkin
+      api-gateway:
+        condition: service_healthy
+
+      zipkin:
+        condition: service_healthy
+
     networks:
       - circuit-breaker-network
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "wget -q --spider http://localhost:3000 || exit 1"
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
     restart: unless-stopped
 
+
+# ==============================================================
+# NETWORK
+# ==============================================================
 networks:
   circuit-breaker-network:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
-
-volumes:
-  zipkin-data:
