@@ -7,21 +7,29 @@ spring:
 
   cloud:
     gateway:
-      routes:
-        - id: product-service
-          uri: http://product-service:8081
-          predicates:
-            - Path=/api/products/**
+      server:
+        webflux:
+          routes:
+            - id: product-service
+              uri: http://product-service:8081
+              predicates:
+                - Path=/api/products/**
+              filters:
+                - StripPrefix=1
 
-        - id: inventory-service
-          uri: http://inventory-service:8082
-          predicates:
-            - Path=/api/inventory/**
+            - id: inventory-service
+              uri: http://inventory-service:8082
+              predicates:
+                - Path=/api/inventory/**
+              filters:
+                - StripPrefix=1
 
-        - id: recommendation-service
-          uri: http://recommendation-service:8083
-          predicates:
-            - Path=/api/recommendations/**
+            - id: recommendation-service
+              uri: http://recommendation-service:8083
+              predicates:
+                - Path=/api/recommendations/**
+              filters:
+                - StripPrefix=1
 
 eureka:
   client:
