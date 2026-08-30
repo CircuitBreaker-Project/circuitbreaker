@@ -1,9 +1,23 @@
+# Maven
 target/
+
+# Java
 *.class
 *.log
+
+# IDE
 .idea/
 .vscode/
 *.iml
+
+# Node / React
 node_modules/
 dist/
+build/
+
+# Environment
 .env
+
+# OS
+.DS_Store
+Thumbs.db

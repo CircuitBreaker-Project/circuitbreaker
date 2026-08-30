@@ -1,5 +1,7 @@
-# Stage 1: Build
-FROM node:18-alpine AS build
+# =========================
+# Stage 1: Build React app
+# =========================
+FROM node:22-alpine AS build
 
 WORKDIR /app
 
@@ -9,27 +11,30 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Copy source code
+# Copy application source
 COPY . .
 
-# Build the React app
+# Build Create React App
 RUN npm run build
 
-# Stage 2: Run with nginx
+
+# =========================
+# Stage 2: Nginx
+# =========================
 FROM nginx:alpine
 
-# Copy built assets from build stage
+# Remove default nginx page
+RUN rm -rf /usr/share/nginx/html/*
+
+# CRA outputs to /app/build
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Copy nginx configuration
+# Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expose port
-EXPOSE 3000
+EXPOSE 5173
 
-# Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-  CMD wget --quiet --tries=1 --spider http://localhost:3000 || exit 1
+    CMD wget --quiet --tries=1 --spider http://127.0.0.1:5173 || exit 1
 
-# Start nginx
 CMD ["nginx", "-g", "daemon off;"]

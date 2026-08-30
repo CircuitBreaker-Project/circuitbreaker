@@ -7,29 +7,54 @@ spring:
 
   cloud:
     gateway:
-      server:
-        webflux:
-          routes:
-            - id: product-service
-              uri: http://product-service:8081
-              predicates:
-                - Path=/api/products/**
-              filters:
-                - StripPrefix=1
+      routes:
 
-            - id: inventory-service
-              uri: http://inventory-service:8082
-              predicates:
-                - Path=/api/inventory/**
-              filters:
-                - StripPrefix=1
+        # =========================
+        # PRODUCT SERVICE
+        # =========================
+        - id: product-service
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/products/**
+          filters:
+            - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: productCircuitBreaker
+                fallbackUri: forward:/fallback/products
 
-            - id: recommendation-service
-              uri: http://recommendation-service:8083
-              predicates:
-                - Path=/api/recommendations/**
-              filters:
-                - StripPrefix=1
+        # =========================
+        # INVENTORY SERVICE
+        # =========================
+        - id: inventory-service
+          uri: lb://INVENTORY-SERVICE
+          predicates:
+            - Path=/api/inventory/**
+          filters:
+            - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: inventoryCircuitBreaker
+                fallbackUri: forward:/fallback/inventory
+
+        # =========================
+        # RECOMMENDATION SERVICE
+        # =========================
+        - id: recommendation-service
+          uri: lb://RECOMMENDATION-SERVICE
+          predicates:
+            - Path=/api/recommendations/**
+          filters:
+            - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: recommendationCircuitBreaker
+                fallbackUri: forward:/fallback/recommendations
+
+    discovery:
+      locator:
+        enabled: true
+        lower-case-service-id: true
 
 eureka:
   client:
@@ -37,6 +62,49 @@ eureka:
       defaultZone: http://eureka-server:8761/eureka/
     register-with-eureka: true
     fetch-registry: true
+
+  instance:
+    prefer-ip-address: true
+
+# =========================
+# RESILIENCE4J
+# =========================
+
+resilience4j:
+  circuitbreaker:
+
+    instances:
+
+      productCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 3
+
+      inventoryCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 3
+
+      recommendationCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 3
+
+# =========================
+# ACTUATOR
+# =========================
 
 management:
   endpoints:
@@ -47,3 +115,11 @@ management:
   endpoint:
     health:
       show-details: always
+
+  tracing:
+    sampling:
+      probability: 1.0
+
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
