@@ -9,6 +9,11 @@ spring:
     gateway:
       server:
         webflux:
+
+          # ==================================================
+          # GATEWAY ROUTES
+          # ==================================================
+
           routes:
 
             # ==================================================
@@ -32,24 +37,60 @@ spring:
             # ==================================================
             # RECOMMENDATION SERVICE
             # ==================================================
-            # Circuit Breaker is intentionally configured here
-            # because Recommendation Service is the Week 2
-            # resilience / chaos-testing target.
+            # Member 1 resilience features are applied here:
+            # Retry + Rate Limiter + Bulkhead + Circuit Breaker
             # ==================================================
 
             - id: recommendation-service
               uri: lb://recommendation-service
+
               predicates:
                 - Path=/recommendations/**
+
               filters:
+
+                # ------------------------------------------------
+                # RETRY
+                # ------------------------------------------------
+                # Retry GET requests up to 3 times when the
+                # downstream service returns a temporary error.
+                # ------------------------------------------------
+
+                - name: Retry
+                  args:
+                    retries: 3
+                    methods:
+                      - GET
+                    statuses:
+                      - BAD_GATEWAY
+                      - SERVICE_UNAVAILABLE
+                      - GATEWAY_TIMEOUT
+
+                # ------------------------------------------------
+                # RATE LIMITER
+                # ------------------------------------------------
+                # Capacity = 10 requests
+                # Refill = 5 requests per second
+                # ------------------------------------------------
+
                 - name: InMemoryRateLimit
                   args:
                     capacity: 10
                     refillPerSecond: 5
 
+                # ------------------------------------------------
+                # BULKHEAD
+                # ------------------------------------------------
+                # Maximum 5 concurrent Recommendation requests.
+                # ------------------------------------------------
+
                 - name: Bulkhead
                   args:
                     name: recommendationBulkhead
+
+                # ------------------------------------------------
+                # CIRCUIT BREAKER
+                # ------------------------------------------------
 
                 - name: CircuitBreaker
                   args:
@@ -59,7 +100,9 @@ spring:
                       - 500
                       - 502
                       - 503
-                      - 504      # ==================================================
+                      - 504
+
+          # ==================================================
           # DEFAULT FILTERS
           # ==================================================
 
@@ -78,6 +121,9 @@ spring:
 # ============================================================
 # EUREKA SERVICE DISCOVERY
 # ============================================================
+# Eureka implementation is owned by Member 4.
+# Gateway uses Eureka for lb:// service discovery.
+# ============================================================
 
 eureka:
   client:
@@ -92,36 +138,67 @@ eureka:
 
 
 # ============================================================
-# RESILIENCE4J CIRCUIT BREAKER
+# RESILIENCE4J
 # ============================================================
 
 resilience4j:
+
+  # ==========================================================
+  # CIRCUIT BREAKER
+  # ==========================================================
+
   circuitbreaker:
     instances:
+
       recommendationServiceCircuitBreaker:
 
+        # Expose Circuit Breaker health through Actuator
         registerHealthIndicator: true
 
+        # Count-based sliding window
         slidingWindowType: COUNT_BASED
         slidingWindowSize: 10
 
+        # Circuit evaluation starts after at least 5 calls
         minimumNumberOfCalls: 5
+
+        # Open when failure rate reaches 50%
         failureRateThreshold: 50
 
+        # Stay OPEN for 10 seconds
         waitDurationInOpenState: 10s
 
+        # Allow 3 trial calls in HALF_OPEN
         permittedNumberOfCallsInHalfOpenState: 3
 
+        # Automatically move OPEN → HALF_OPEN
         automaticTransitionFromOpenToHalfOpenEnabled: true
+
+  # ==========================================================
+  # BULKHEAD
+  # ==========================================================
+
   bulkhead:
     instances:
+
       recommendationBulkhead:
+
+        # Only 5 calls can execute concurrently
         maxConcurrentCalls: 5
+
+        # Do not wait for a free permit
         maxWaitDuration: 0ms
+
+  # ==========================================================
+  # TIME LIMITER
+  # ==========================================================
 
   timelimiter:
     instances:
+
       recommendationServiceCircuitBreaker:
+
+        # Maximum allowed execution time
         timeoutDuration: 3s
 
 
