@@ -36,28 +36,52 @@ public class InMemoryRateLimitGatewayFilterFactory
 
             boolean allowed = bucket.tryConsume();
 
-            exchange.getResponse().getHeaders().set(
-                    "X-RateLimit-Limit",
-                    String.valueOf(config.getCapacity())
-            );
-
-            exchange.getResponse().getHeaders().set(
-                    "X-RateLimit-Remaining",
-                    String.valueOf(bucket.getRemaining())
-            );
-
+            /*
+             * Rate limiting is decided before passing the request
+             * to the remaining Gateway filters.
+             */
             if (!allowed) {
 
-                exchange.getResponse().setStatusCode(
-                        HttpStatus.TOO_MANY_REQUESTS
+                if (!exchange.getResponse().isCommitted()) {
+                    exchange.getResponse().getHeaders().set(
+                            "X-RateLimit-Limit",
+                            String.valueOf(config.getCapacity())
+                    );
+
+                    exchange.getResponse().getHeaders().set(
+                            "X-RateLimit-Remaining",
+                            String.valueOf(bucket.getRemaining())
+                    );
+
+                    exchange.getResponse().getHeaders().set(
+                            "Retry-After",
+                            "1"
+                    );
+
+                    exchange.getResponse().setStatusCode(
+                            HttpStatus.TOO_MANY_REQUESTS
+                    );
+                }
+
+                return exchange.getResponse().setComplete();
+            }
+
+            /*
+             * For an allowed request, add the headers only if the
+             * response has not already been committed.
+             *
+             * Do NOT attempt to modify headers after chain.filter().
+             */
+            if (!exchange.getResponse().isCommitted()) {
+                exchange.getResponse().getHeaders().set(
+                        "X-RateLimit-Limit",
+                        String.valueOf(config.getCapacity())
                 );
 
                 exchange.getResponse().getHeaders().set(
-                        "Retry-After",
-                        "1"
+                        "X-RateLimit-Remaining",
+                        String.valueOf(bucket.getRemaining())
                 );
-
-                return exchange.getResponse().setComplete();
             }
 
             return chain.filter(exchange);

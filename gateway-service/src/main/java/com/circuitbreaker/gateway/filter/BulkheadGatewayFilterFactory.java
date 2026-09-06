@@ -27,14 +27,17 @@ public class BulkheadGatewayFilterFactory
 
             if (!bulkhead.tryAcquirePermission()) {
 
-                exchange.getResponse().setStatusCode(
-                        HttpStatus.SERVICE_UNAVAILABLE
-                );
+                if (!exchange.getResponse().isCommitted()) {
 
-                exchange.getResponse().getHeaders().set(
-                        "X-Bulkhead-Rejected",
-                        "true"
-                );
+                    exchange.getResponse().getHeaders().set(
+                            "X-Bulkhead-Rejected",
+                            "true"
+                    );
+
+                    exchange.getResponse().setStatusCode(
+                            HttpStatus.SERVICE_UNAVAILABLE
+                    );
+                }
 
                 return exchange.getResponse().setComplete();
             }
@@ -56,4 +59,4 @@ public class BulkheadGatewayFilterFactory
             this.name = name;
         }
     }
-}
+}   
